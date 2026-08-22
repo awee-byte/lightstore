@@ -1,0 +1,2093 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ضوء ستور | Blox Fruits</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    min-height:100vh;
+    font-family:Arial,Tahoma,sans-serif;
+    color:white;
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            #ffe600 0%,
+            #8b7c00 8%,
+            #292600 22%,
+            #080808 48%,
+            #000 75%
+        );
+    background-attachment:fixed;
+}
+
+/* ================= HEADER ================= */
+
+.navbar{
+    height:82px;
+    position:sticky;
+    top:0;
+    z-index:1000;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:0 5%;
+
+    background:rgba(5,5,5,.96);
+    backdrop-filter:blur(15px);
+
+    border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:5px;
+
+    text-decoration:none;
+    white-space:nowrap;
+
+    font-size:25px;
+    font-weight:900;
+}
+
+.logo-yellow{
+    color:#ffd900;
+}
+
+.logo-white{
+    color:white;
+}
+
+.nav-links{
+    display:flex;
+    align-items:center;
+    gap:34px;
+}
+
+.nav-links a{
+    position:relative;
+    color:#bdbdbd;
+    text-decoration:none;
+    font-size:14px;
+    font-weight:600;
+    transition:.2s;
+}
+
+.nav-links a:hover{
+    color:white;
+}
+
+.nav-links a.active{
+    color:#ffd900;
+}
+
+.nav-links a.active::after{
+    content:"";
+    position:absolute;
+    right:0;
+    left:0;
+    bottom:-12px;
+    height:2px;
+    background:#ffd900;
+}
+
+/* ================= ACTIONS ================= */
+
+.header-actions{
+    display:flex;
+    align-items:center;
+    gap:9px;
+}
+
+.search-button,
+.cart-button{
+    height:42px;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:bold;
+    transition:.2s;
+}
+
+.search-button{
+    width:70px;
+    background:#111;
+    color:white;
+    border:1px solid #292929;
+}
+
+.search-button:hover{
+    color:#ffd900;
+    border-color:#ffd900;
+}
+
+.cart-button{
+    position:relative;
+    width:70px;
+    background:#ffd900;
+    color:#000;
+    border:none;
+}
+
+.cart-button:hover{
+    background:white;
+}
+
+.cart-count{
+    position:absolute;
+    top:-7px;
+    left:-7px;
+
+    width:20px;
+    height:20px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:white;
+    color:#000;
+
+    font-size:10px;
+    font-weight:bold;
+
+    border:2px solid #050505;
+}
+
+/* ================= HERO ================= */
+
+.hero{
+    min-height:390px;
+
+    position:relative;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+
+    padding:70px 20px;
+
+    overflow:hidden;
+}
+
+.hero::before{
+    content:"";
+
+    position:absolute;
+
+    width:800px;
+    height:400px;
+
+    top:-180px;
+
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(255,220,0,.25),
+            transparent 68%
+        );
+
+    filter:blur(35px);
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+}
+
+.hero-badge{
+    display:inline-block;
+
+    padding:8px 17px;
+    margin-bottom:20px;
+
+    color:#ffd900;
+
+    background:rgba(255,217,0,.06);
+
+    border:1px solid rgba(255,217,0,.3);
+
+    border-radius:50px;
+
+    font-size:12px;
+    font-weight:bold;
+}
+
+.hero h1{
+    font-size:clamp(45px,7vw,78px);
+    font-weight:900;
+    line-height:1;
+    margin-bottom:20px;
+}
+
+.hero h1 span{
+    color:#ffd900;
+}
+
+.hero p{
+    max-width:600px;
+    margin:auto;
+
+    color:#999;
+
+    line-height:1.8;
+    font-size:14px;
+}
+
+/* ================= CONTAINER ================= */
+
+.container{
+    width:90%;
+    max-width:1400px;
+    margin:auto;
+    padding:35px 0 80px;
+}
+
+.page-title{
+    text-align:center;
+    margin-bottom:30px;
+}
+
+.page-title h2{
+    font-size:34px;
+    margin-bottom:8px;
+}
+
+.page-title h2 span{
+    color:#ffd900;
+}
+
+.page-title p{
+    color:#777;
+    font-size:13px;
+}
+
+/* ================= TOOLBAR ================= */
+
+.toolbar{
+    display:flex;
+    align-items:center;
+    gap:10px;
+
+    padding:13px;
+    margin-bottom:18px;
+
+    background:rgba(7,7,7,.92);
+
+    border:1px solid #202020;
+    border-radius:14px;
+
+    flex-wrap:wrap;
+}
+
+.search{
+    flex:1;
+    min-width:220px;
+}
+
+.search input{
+    width:100%;
+    height:44px;
+
+    padding:0 15px;
+
+    background:#111;
+    color:white;
+
+    border:1px solid #292929;
+    border-radius:9px;
+
+    outline:none;
+}
+
+.search input:focus{
+    border-color:#ffd900;
+}
+
+select{
+    height:44px;
+
+    padding:0 13px;
+
+    background:#111;
+    color:#ccc;
+
+    border:1px solid #292929;
+    border-radius:9px;
+
+    outline:none;
+
+    cursor:pointer;
+}
+
+/* ================= RARITY ================= */
+
+.rarity-buttons{
+    display:flex;
+    gap:7px;
+
+    margin-bottom:25px;
+
+    flex-wrap:wrap;
+}
+
+.rarity-button{
+    padding:9px 14px;
+
+    background:#101010;
+    color:#999;
+
+    border:1px solid #292929;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+    transition:.2s;
+
+    font-size:12px;
+}
+
+.rarity-button:hover{
+    color:white;
+    border-color:#555;
+}
+
+.rarity-button.active{
+    background:#ffd900;
+    color:#000;
+    border-color:#ffd900;
+}
+
+/* ================= PRODUCTS ================= */
+
+.products{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:18px;
+}
+
+.product{
+    overflow:hidden;
+    position:relative;
+
+    background:#080808;
+
+    border:1px solid #202020;
+    border-radius:16px;
+
+    transition:
+        transform .25s,
+        box-shadow .25s,
+        border-color .25s;
+}
+
+.product:hover{
+    transform:translateY(-6px);
+}
+
+/* ================= RARITY COLORS ================= */
+
+.product[data-rarity="Common"] .product-image{
+    background:
+        radial-gradient(
+            circle at center,
+            #777 0%,
+            #3b3b3b 35%,
+            #111 72%,
+            #050505 100%
+        );
+}
+
+.product[data-rarity="Uncommon"] .product-image{
+    background:
+        radial-gradient(
+            circle at center,
+            #36b957 0%,
+            #17632d 38%,
+            #0a2512 72%,
+            #030603 100%
+        );
+}
+
+.product[data-rarity="Rare"] .product-image{
+    background:
+        radial-gradient(
+            circle at center,
+            #3e9cff 0%,
+            #1763aa 38%,
+            #0a2c4d 72%,
+            #03070b 100%
+        );
+}
+
+.product[data-rarity="Legendary"] .product-image{
+    background:
+        radial-gradient(
+            circle at center,
+            #c95dff 0%,
+            #8334ad 38%,
+            #42195b 72%,
+            #08030b 100%
+        );
+}
+
+.product[data-rarity="Mythical"] .product-image{
+    background:
+        radial-gradient(
+            circle at center,
+            #ff4b56 0%,
+            #c4212f 35%,
+            #6c1119 70%,
+            #100204 100%
+        );
+}
+
+/* ================= IMAGE ================= */
+
+.product-image{
+    height:220px;
+
+    position:relative;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    overflow:hidden;
+}
+
+.product-image::after{
+    content:"";
+
+    position:absolute;
+    inset:0;
+
+    background:
+        radial-gradient(
+            circle,
+            transparent 25%,
+            rgba(0,0,0,.4) 100%
+        );
+
+    pointer-events:none;
+}
+
+.product-image img{
+    width:100%;
+    height:100%;
+
+    object-fit:contain;
+
+    position:relative;
+    z-index:2;
+
+    transition:.3s;
+}
+
+.product:hover .product-image img{
+    transform:scale(1.08);
+}
+
+/* ================= PRODUCT BODY ================= */
+
+.product-body{
+    padding:16px;
+}
+
+.product-name{
+    font-size:18px;
+    margin-bottom:7px;
+}
+
+.product-type{
+    color:#777;
+    font-size:11px;
+    margin-bottom:10px;
+}
+
+.rarity{
+    display:inline-block;
+
+    padding:5px 9px;
+
+    border-radius:6px;
+
+    font-size:10px;
+    font-weight:bold;
+
+    margin-bottom:14px;
+}
+
+.common{
+    background:#555;
+}
+
+.uncommon{
+    background:#247b37;
+}
+
+.rare{
+    background:#2876bd;
+}
+
+.legendary{
+    background:#9b48d0;
+}
+
+.mythical{
+    background:#d52d2d;
+}
+
+/* ================= STOCK ================= */
+
+.stock{
+    margin-bottom:14px;
+
+    font-size:13px;
+    font-weight:bold;
+}
+
+.stock.available{
+    color:#35d66b;
+}
+
+.stock.unavailable{
+    color:#ff4444;
+}
+
+/* ================= BOTTOM ================= */
+
+.product-bottom{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+}
+
+.price{
+    color:#ffd900;
+    font-size:18px;
+    font-weight:900;
+}
+
+.buy{
+    padding:9px 14px;
+
+    border:none;
+    border-radius:8px;
+
+    background:#ffd900;
+    color:#000;
+
+    font-weight:bold;
+    cursor:pointer;
+
+    transition:.2s;
+}
+
+.buy:hover{
+    background:white;
+    transform:scale(1.03);
+}
+
+.buy:disabled{
+    background:#333;
+    color:#777;
+    cursor:not-allowed;
+    transform:none;
+}
+
+/* ================= NO RESULTS ================= */
+
+.no-results{
+    display:none;
+
+    text-align:center;
+
+    padding:80px 20px;
+
+    color:#666;
+}
+
+.no-results h3{
+    color:white;
+    margin-bottom:8px;
+}
+
+/* ================= INFO ================= */
+
+.info{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+
+    gap:18px;
+
+    margin-top:60px;
+}
+
+.info-card{
+    padding:24px;
+
+    background:#090909;
+
+    border:1px solid #202020;
+    border-radius:15px;
+}
+
+.info-card h3{
+    margin-bottom:7px;
+}
+
+.info-card p{
+    color:#777;
+    font-size:13px;
+    line-height:1.7;
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+    padding:40px 5%;
+
+    background:#030303;
+
+    border-top:1px solid #202020;
+
+    text-align:center;
+}
+
+footer strong{
+    color:#ffd900;
+    font-size:18px;
+}
+
+footer p{
+    color:#666;
+    margin-top:8px;
+    font-size:12px;
+}
+
+/* ================= CART ================= */
+
+.overlay{
+    position:fixed;
+    inset:0;
+
+    z-index:3000;
+
+    background:rgba(0,0,0,.75);
+
+    opacity:0;
+    pointer-events:none;
+
+    transition:.25s;
+}
+
+.overlay.active{
+    opacity:1;
+    pointer-events:auto;
+}
+
+.cart-panel{
+    position:absolute;
+
+    top:0;
+    left:0;
+
+    width:min(430px,92vw);
+    height:100%;
+
+    padding:25px;
+
+    overflow-y:auto;
+
+    background:#090909;
+
+    border-right:1px solid #292929;
+
+    transform:translateX(-100%);
+
+    transition:.3s;
+}
+
+.overlay.active .cart-panel{
+    transform:translateX(0);
+}
+
+.cart-header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding-bottom:18px;
+    margin-bottom:20px;
+
+    border-bottom:1px solid #222;
+}
+
+.close{
+    padding:8px 12px;
+
+    background:#111;
+    color:white;
+
+    border:1px solid #333;
+    border-radius:8px;
+
+    cursor:pointer;
+}
+
+.cart-item{
+    display:flex;
+    align-items:center;
+
+    gap:12px;
+
+    padding:12px;
+    margin-bottom:10px;
+
+    background:#111;
+
+    border:1px solid #222;
+    border-radius:11px;
+}
+
+.cart-item img{
+    width:60px;
+    height:60px;
+
+    object-fit:contain;
+
+    background:#050505;
+    border-radius:8px;
+}
+
+.cart-info{
+    flex:1;
+}
+
+.cart-info strong{
+    display:block;
+    margin-bottom:6px;
+}
+
+.cart-info span{
+    color:#ffd900;
+    font-size:13px;
+}
+
+.remove{
+    background:none;
+    border:none;
+
+    color:#777;
+
+    cursor:pointer;
+}
+
+.remove:hover{
+    color:#ff4444;
+}
+
+.cart-total{
+    display:flex;
+    justify-content:space-between;
+
+    margin-top:25px;
+    padding-top:20px;
+
+    border-top:1px solid #222;
+
+    font-size:18px;
+    font-weight:bold;
+}
+
+.checkout{
+    width:100%;
+
+    margin-top:18px;
+    padding:14px;
+
+    border:none;
+    border-radius:10px;
+
+    background:#ffd900;
+    color:#000;
+
+    font-weight:bold;
+
+    cursor:pointer;
+}
+
+.empty{
+    text-align:center;
+    color:#666;
+    padding:70px 10px;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:1100px){
+
+    .products{
+        grid-template-columns:repeat(3,1fr);
+    }
+
+}
+
+@media(max-width:800px){
+
+    .nav-links{
+        display:none;
+    }
+
+    .products{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .info{
+        grid-template-columns:1fr;
+    }
+
+}
+
+@media(max-width:550px){
+
+    .navbar{
+        padding:0 15px;
+    }
+
+    .logo{
+        font-size:20px;
+    }
+
+    .products{
+        grid-template-columns:1fr;
+    }
+
+    .toolbar{
+        align-items:stretch;
+    }
+
+    select{
+        flex:1;
+    }
+
+}
+</style>
+</head>
+
+
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<header class="navbar">
+
+    <a href="#" class="logo">
+        <span class="logo-yellow">ضوء</span>
+        <span class="logo-white">ستور</span>
+    </a>
+
+    <nav class="nav-links">
+
+        <a href="#" class="active">
+            الرئيسية
+        </a>
+
+        <a href="#blox">
+            Blox Fruits
+        </a>
+
+        <a href="#info">
+            الدعم
+        </a>
+
+    </nav>
+
+    <div class="header-actions">
+
+        <button
+            class="search-button"
+            onclick="focusSearch()">
+
+            بحث
+
+        </button>
+
+        <button
+            class="cart-button"
+            onclick="openCart()">
+
+            سلة
+
+            <span
+                class="cart-count"
+                id="cartCount">
+
+                0
+
+            </span>
+
+        </button>
+
+    </div>
+
+</header>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="hero-badge">
+            Blox Fruits
+        </div>
+
+        <h1>
+            ضوء
+            <span>
+                ستور
+            </span>
+        </h1>
+
+        <p>
+            جميع فواكه Blox Fruits
+            بأسعار Robux، مرتبة حسب الندرة.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- ================= PRODUCTS ================= -->
+
+<main
+    class="container"
+    id="blox">
+
+    <div class="page-title">
+
+        <h2>
+            <span>
+                Blox Fruits
+            </span>
+        </h2>
+
+        <p>
+            اختر الفاكهة التي تريدها
+        </p>
+
+    </div>
+
+
+    <!-- TOOLBAR -->
+
+    <div class="toolbar">
+
+        <div class="search">
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="ابحث عن فاكهة..."
+                oninput="filterProducts()">
+
+        </div>
+
+
+        <select
+            id="rarityFilter"
+            onchange="filterProducts()">
+
+            <option value="all">
+                كل الندرات
+            </option>
+
+            <option value="Common">
+                Common
+            </option>
+
+            <option value="Uncommon">
+                Uncommon
+            </option>
+
+            <option value="Rare">
+                Rare
+            </option>
+
+            <option value="Legendary">
+                Legendary
+            </option>
+
+            <option value="Mythical">
+                Mythical
+            </option>
+
+        </select>
+
+
+        <select
+            id="typeFilter"
+            onchange="filterProducts()">
+
+            <option value="all">
+                كل الأنواع
+            </option>
+
+            <option value="Natural">
+                Natural
+            </option>
+
+            <option value="Elemental">
+                Elemental
+            </option>
+
+            <option value="Beast">
+                Beast
+            </option>
+
+        </select>
+
+
+        <select
+            id="sortFilter"
+            onchange="sortProducts()">
+
+            <option value="default">
+                الترتيب
+            </option>
+
+            <option value="low">
+                السعر: الأقل
+            </option>
+
+            <option value="high">
+                السعر: الأعلى
+            </option>
+
+        </select>
+
+    </div>
+
+
+    <!-- RARITY BUTTONS -->
+
+    <div class="rarity-buttons">
+
+        <button
+            class="rarity-button active"
+            onclick="setRarity('all',this)">
+
+            الكل
+
+        </button>
+
+        <button
+            class="rarity-button"
+            onclick="setRarity('Common',this)">
+
+            Common
+
+        </button>
+
+        <button
+            class="rarity-button"
+            onclick="setRarity('Uncommon',this)">
+
+            Uncommon
+
+        </button>
+
+        <button
+            class="rarity-button"
+            onclick="setRarity('Rare',this)">
+
+            Rare
+
+        </button>
+
+        <button
+            class="rarity-button"
+            onclick="setRarity('Legendary',this)">
+
+            Legendary
+
+        </button>
+
+        <button
+            class="rarity-button"
+            onclick="setRarity('Mythical',this)">
+
+            Mythical
+
+        </button>
+
+    </div>
+
+
+    <div
+        class="products"
+        id="products">
+    </div>
+
+
+    <div
+        class="no-results"
+        id="noResults">
+
+        <h3>
+            لم نجد الفاكهة
+        </h3>
+
+        <p>
+            جرب البحث باسم آخر.
+        </p>
+
+    </div>
+
+
+    <!-- INFO -->
+
+    <div
+        class="info"
+        id="info">
+
+        <div class="info-card">
+
+            <h3>
+                بحث سريع
+            </h3>
+
+            <p>
+                ابحث عن أي فاكهة بالاسم.
+            </p>
+
+        </div>
+
+
+        <div class="info-card">
+
+            <h3>
+                تصنيف الندرة
+            </h3>
+
+            <p>
+                كل فاكهة لها خلفية خاصة حسب ندرتها.
+            </p>
+
+        </div>
+
+
+        <div class="info-card">
+
+            <h3>
+                الطلب
+            </h3>
+
+            <p>
+                أضف الفواكه التي تريدها إلى السلة ثم تابع الطلب.
+            </p>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <strong>
+        ضوء ستور
+    </strong>
+
+    <p>
+        Light Store — Blox Fruits
+    </p>
+
+</footer>
+
+
+<!-- ================= CART ================= -->
+
+<div
+    class="overlay"
+    id="cartOverlay"
+    onclick="outsideCart(event)">
+
+    <div
+        class="cart-panel"
+        onclick="event.stopPropagation()">
+
+        <div class="cart-header">
+
+            <h2>
+                السلة
+            </h2>
+
+            <button
+                class="close"
+                onclick="closeCart()">
+
+                إغلاق
+
+            </button>
+
+        </div>
+
+
+        <div id="cartItems">
+
+            <div class="empty">
+                السلة فارغة
+            </div>
+
+        </div>
+
+
+        <div class="cart-total">
+
+            <span>
+                المجموع
+            </span>
+
+            <span id="cartTotal">
+                0 Robux
+            </span>
+
+        </div>
+
+
+        <button
+            class="checkout"
+            onclick="checkout()">
+
+            متابعة الطلب
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* =====================================================
+   إعداد الفواكه
+
+   غير stock فقط عندما تريد تعديل الكمية.
+
+   مثال:
+   stock: 5
+
+   إذا صار:
+   stock: 0
+
+   تظهر "غير متوفر حالياً!" باللون الأحمر.
+
+   ملاحظة:
+   الشراء لا ينقص المخزون.
+===================================================== */
+
+const fruits = [
+
+    {
+        name:"Ice",
+        folder:"ice",
+        rarity:"Uncommon",
+        type:"Elemental",
+        price:29,
+        stock:3
+    },
+
+    {
+        name:"Dark",
+        folder:"dark",
+        rarity:"Uncommon",
+        type:"Elemental",
+        price:39,
+        stock:3
+    },
+
+    {
+        name:"Light",
+        folder:"light",
+        rarity:"Rare",
+        type:"Elemental",
+        price:80,
+        stock:2
+    },
+
+    {
+        name:"Magma",
+        folder:"magma",
+        rarity:"Rare",
+        type:"Elemental",
+        price:129,
+        stock:3
+    },
+
+    {
+        name:"Quake",
+        folder:"quake",
+        rarity:"Rare",
+        type:"Natural",
+        price:99,
+        stock:2
+    },
+
+    {
+        name:"Buddha",
+        folder:"buddha",
+        rarity:"Legendary",
+        type:"Beast",
+        price:299,
+        stock:3
+    },
+
+    {
+        name:"Portal",
+        folder:"portal",
+        rarity:"Legendary",
+        type:"Natural",
+        price:299,
+        stock:2
+    },
+
+    {
+        name:"Lightning",
+        folder:"lighting",
+        rarity:"Legendary",
+        type:"Elemental",
+        price:599,
+        stock:2
+    },
+
+    {
+        name:"Mammoth",
+        folder:"mammoth",
+        rarity:"Mythical",
+        type:"Beast",
+        price:199,
+        stock:2
+    },
+
+    {
+        name:"T-Rex",
+        folder:"t-rex",
+        rarity:"Mythical",
+        type:"Beast",
+        price:369,
+        stock:2
+    },
+
+    {
+        name:"Dough",
+        folder:"dough",
+        rarity:"Legendary",
+        type:"Natural",
+        price:799,
+        stock:2
+    },
+
+    {
+        name:"Shadow",
+        folder:"shadow",
+        rarity:"Mythical",
+        type:"Natural",
+        price:299,
+        stock:2
+    },
+
+    {
+        name:"Venom",
+        folder:"venom",
+        rarity:"Mythical",
+        type:"Natural",
+        price:499,
+        stock:2
+    },
+
+    {
+        name:"Gas",
+        folder:"gas",
+        rarity:"Mythical",
+        type:"Elemental",
+        price:699,
+        stock:2
+    },
+
+    {
+        name:"Spirit",
+        folder:"spirit",
+        rarity:"Mythical",
+        type:"Natural",
+        price:299,
+        stock:2
+    },
+
+    {
+        name:"Tiger",
+        folder:"tiger",
+        rarity:"Mythical",
+        type:"Beast",
+        price:1399,
+        stock:1
+    },
+
+    {
+        name:"Kitsune",
+        folder:"kitsune",
+        rarity:"Mythical",
+        type:"Beast",
+        price:2499,
+        stock:1
+    },
+
+    {
+        name:"Control",
+        folder:"control",
+        rarity:"Mythical",
+        type:"Natural",
+        price:1599,
+        stock:1
+    },
+
+    {
+        name:"Yeti",
+        folder:"yeti",
+        rarity:"Mythical",
+        type:"Beast",
+        price:899,
+        stock:1
+    },
+
+    {
+        name:"Dragon",
+        folder:"dragon",
+        rarity:"Mythical",
+        type:"Beast",
+        price:3999,
+        stock:1
+    }
+
+];
+
+
+/* ================= CART ================= */
+
+let cart=[];
+
+
+/* ================= CREATE PRODUCTS ================= */
+
+function createProducts(){
+
+    const container=
+        document.getElementById("products");
+
+    container.innerHTML="";
+
+    fruits.forEach((fruit,index)=>{
+
+        const image=
+            `images/${fruit.folder}/fruit.png`;
+
+        const available=
+            fruit.stock>0;
+
+        const rarityClass=
+            fruit.rarity.toLowerCase();
+
+        const card=
+            document.createElement("div");
+
+        card.className="product";
+
+        card.dataset.name=
+            fruit.name;
+
+        card.dataset.rarity=
+            fruit.rarity;
+
+        card.dataset.type=
+            fruit.type;
+
+        card.dataset.price=
+            fruit.price;
+
+        card.innerHTML=`
+
+            <div class="product-image">
+
+                <img
+                    src="${image}"
+                    alt="${fruit.name}">
+
+            </div>
+
+            <div class="product-body">
+
+                <h3 class="product-name">
+                    ${fruit.name}
+                </h3>
+
+                <div class="product-type">
+                    ${fruit.type}
+                </div>
+
+                <span class="rarity ${rarityClass}">
+                    ${fruit.rarity}
+                </span>
+
+                <div class="stock ${
+                    available
+                    ? "available"
+                    : "unavailable"
+                }">
+
+                    ${
+                        available
+                        ? `متوفر — ${fruit.stock}`
+                        : `غير متوفر حالياً!`
+                    }
+
+                </div>
+
+                <div class="product-bottom">
+
+                    <span class="price">
+                        ${fruit.price} Robux
+                    </span>
+
+                    <button
+                        class="buy"
+                        ${
+                            available
+                            ? ""
+                            : "disabled"
+                        }
+                        onclick="addCart(${index})">
+
+                        ${
+                            available
+                            ? "شراء"
+                            : "غير متوفر"
+                        }
+
+                    </button>
+
+                </div>
+
+            </div>
+        `;
+
+        container.appendChild(card);
+
+    });
+
+}
+
+
+/* ================= ADD TO CART ================= */
+
+function addCart(index){
+
+    const fruit=
+        fruits[index];
+
+    if(fruit.stock<=0){
+
+        alert(
+            "هذه الفاكهة غير متوفرة حالياً."
+        );
+
+        return;
+    }
+
+    /*
+       لا نغير fruit.stock هنا.
+       المخزون يبقى كما هو.
+    */
+
+    cart.push({
+
+        name:fruit.name,
+
+        price:fruit.price,
+
+        image:
+            `images/${fruit.folder}/fruit.png`
+
+    });
+
+    updateCart();
+
+    openCart();
+
+}
+
+
+/* ================= UPDATE CART ================= */
+
+function updateCart(){
+
+    const items=
+        document.getElementById(
+            "cartItems"
+        );
+
+    const count=
+        document.getElementById(
+            "cartCount"
+        );
+
+    const total=
+        document.getElementById(
+            "cartTotal"
+        );
+
+    count.textContent=
+        cart.length;
+
+
+    if(cart.length===0){
+
+        items.innerHTML=`
+
+            <div class="empty">
+                السلة فارغة
+            </div>
+
+        `;
+
+        total.textContent=
+            "0 Robux";
+
+        return;
+    }
+
+
+    items.innerHTML="";
+
+    let sum=0;
+
+
+    cart.forEach((item,index)=>{
+
+        sum+=item.price;
+
+        const div=
+            document.createElement(
+                "div"
+            );
+
+        div.className=
+            "cart-item";
+
+        div.innerHTML=`
+
+            <img
+                src="${item.image}"
+                alt="${item.name}">
+
+            <div class="cart-info">
+
+                <strong>
+                    ${item.name}
+                </strong>
+
+                <span>
+                    ${item.price} Robux
+                </span>
+
+            </div>
+
+            <button
+                class="remove"
+                onclick="removeCart(${index})">
+
+                حذف
+
+            </button>
+
+        `;
+
+        items.appendChild(div);
+
+    });
+
+
+    total.textContent=
+        sum.toLocaleString()
+        + " Robux";
+
+}
+
+
+/* ================= REMOVE ================= */
+
+function removeCart(index){
+
+    cart.splice(index,1);
+
+    updateCart();
+
+}
+
+
+/* ================= OPEN CART ================= */
+
+function openCart(){
+
+    document
+        .getElementById("cartOverlay")
+        .classList
+        .add("active");
+
+}
+
+
+/* ================= CLOSE CART ================= */
+
+function closeCart(){
+
+    document
+        .getElementById("cartOverlay")
+        .classList
+        .remove("active");
+
+}
+
+
+/* ================= OUTSIDE CART ================= */
+
+function outsideCart(event){
+
+    if(
+        event.target.id===
+        "cartOverlay"
+    ){
+
+        closeCart();
+
+    }
+
+}
+
+
+/* ================= WHATSAPP ORDER ================= */
+
+function checkout(){
+
+    if(cart.length===0){
+
+        alert(
+            "السلة فارغة!"
+        );
+
+        return;
+    }
+
+
+    let message=
+        "السلام عليكم، أريد طلب:\n\n";
+
+    let total=0;
+
+
+    cart.forEach(item=>{
+
+        message+=
+            item.name
+            + " - "
+            + item.price
+            + " Robux\n";
+
+        total+=item.price;
+
+    });
+
+
+    message+=
+        "\nالمجموع: "
+        + total
+        + " Robux";
+
+
+    /*
+       الرقم:
+       07745788087
+
+       بصيغة واتساب الدولية للعراق:
+       9647745788087
+    */
+
+    const phone=
+        "9647745788087";
+
+
+    const url=
+        "https://wa.me/"
+        + phone
+        + "?text="
+        + encodeURIComponent(message);
+
+
+    window.open(
+        url,
+        "_blank"
+    );
+
+}
+
+
+/* ================= SEARCH ================= */
+
+function focusSearch(){
+
+    const search=
+        document.getElementById(
+            "searchInput"
+        );
+
+    search.focus();
+
+    document
+        .getElementById("blox")
+        .scrollIntoView({
+            behavior:"smooth"
+        });
+
+}
+
+
+/* ================= FILTER ================= */
+
+function filterProducts(){
+
+    const search=
+        document
+        .getElementById("searchInput")
+        .value
+        .toLowerCase();
+
+
+    const rarity=
+        document
+        .getElementById("rarityFilter")
+        .value;
+
+
+    const type=
+        document
+        .getElementById("typeFilter")
+        .value;
+
+
+    const products=
+        document.querySelectorAll(
+            ".product"
+        );
+
+
+    let visible=0;
+
+
+    products.forEach(product=>{
+
+        const name=
+            product.dataset.name
+            .toLowerCase();
+
+        const productRarity=
+            product.dataset.rarity;
+
+        const productType=
+            product.dataset.type;
+
+
+        const searchMatch=
+            name.includes(search);
+
+        const rarityMatch=
+            rarity==="all"
+            ||
+            productRarity===rarity;
+
+        const typeMatch=
+            type==="all"
+            ||
+            productType===type;
+
+
+        if(
+            searchMatch &&
+            rarityMatch &&
+            typeMatch
+        ){
+
+            product.style.display="";
+            visible++;
+
+        }else{
+
+            product.style.display="none";
+
+        }
+
+    });
+
+
+    document.getElementById(
+        "noResults"
+    ).style.display=
+        visible===0
+        ? "block"
+        : "none";
+
+}
+
+
+/* ================= RARITY BUTTONS ================= */
+
+function setRarity(
+    rarity,
+    button
+){
+
+    document.getElementById(
+        "rarityFilter"
+    ).value=rarity;
+
+
+    document
+        .querySelectorAll(
+            ".rarity-button"
+        )
+        .forEach(btn=>{
+
+            btn.classList.remove(
+                "active"
+            );
+
+        });
+
+
+    button.classList.add(
+        "active"
+    );
+
+
+    filterProducts();
+
+}
+
+
+/* ================= SORT ================= */
+
+function sortProducts(){
+
+    const grid=
+        document.getElementById(
+            "products"
+        );
+
+    const products=
+        Array.from(
+            grid.querySelectorAll(
+                ".product"
+            )
+        );
+
+
+    const sort=
+        document.getElementById(
+            "sortFilter"
+        ).value;
+
+
+    if(sort==="low"){
+
+        products.sort(
+            (a,b)=>
+                Number(a.dataset.price)
+                -
+                Number(b.dataset.price)
+        );
+
+    }
+
+
+    if(sort==="high"){
+
+        products.sort(
+            (a,b)=>
+                Number(b.dataset.price)
+                -
+                Number(a.dataset.price)
+        );
+
+    }
+
+
+    products.forEach(product=>{
+
+        grid.appendChild(product);
+
+    });
+
+}
+
+
+/* ================= ESC ================= */
+
+document.addEventListener(
+    "keydown",
+    event=>{
+
+        if(event.key==="Escape"){
+
+            closeCart();
+
+        }
+
+    }
+);
+
+
+/* ================= START ================= */
+
+createProducts();
+
+</script>
+
+</body>
+</html>
